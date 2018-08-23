@@ -19,12 +19,16 @@ def scrape_player(year):
     RETURNS
     -------
     None
+
+    OUTPUT
+    ------
+    {csv}
     '''
     # Get URL by year
     url = 'https://www.basketball-reference.com/leagues/NBA_{}_totals.html'.format(year)
     
     # Pass in Chrome options
-    chrome_options = c.Options()  
+    chrome_options = Options()  
     # FIXME: figure out how to get selenium to run Chrome headless 
     # Set headless - Trying to run it in headless seems to break things
     # chrome_options.add_argument("--headless")  
@@ -52,9 +56,9 @@ def scrape_player(year):
                 ('[tip="Export table as <br>suitable for use with excel"]')
         button1.click()
         button2.click()
-        csv = driver.find_element_by_id('csv_per_minute_stats').text
+        csv = driver.find_element_by_id('csv_totals_stats').text
         driver.close()
-        with open('../data/players{}{}.csv'.format(year-1,str(year)[-2:]), 'w+') as f:
+        with open('data/players{}{}.csv'.format(year-1,str(year)[-2:]), 'w+') as f:
             f.write(csv)
         print("Success!")
         
@@ -70,11 +74,17 @@ def scrape_players(start_year, end_year):
 
     PARAMETERS
     ----------
-    year: {int}
+    start_year: {int}
+
+    end_year: {int}
 
     RETURNS
     -------
     None
+
+    OUTPUT
+    ------
+    {csv}
     '''
     for year in range(start_year, end_year+1):
         print("Scraping for the {}-{} season".format(year-1,str(year)[-2:]))
@@ -119,3 +129,6 @@ def load_data(filename):
     players_df.set_index('id', inplace=True)
 
     return player_df
+
+if __name__ == "__main__":
+    scrape_players(1985,2018)
