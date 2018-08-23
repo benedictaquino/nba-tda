@@ -1,6 +1,6 @@
 from selenium import webdriver
 import selenium.webdriver.chrome.options as c
-import selenium.webdriver.firefox.options as f
+# import selenium.webdriver.firefox.options as f
 from selenium.webdriver.common.by import By 
 from selenium.webdriver.support.ui import WebDriverWait 
 from selenium.webdriver.support import expected_conditions as EC 
@@ -31,15 +31,16 @@ def scrape_player(year):
     # Set window size
     # chrome_options.add_argument("--window-size=1920,1080")
     # Set chrome to not load images
-    chrome_options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images":2})
+    chrome_options.add_argument("--blink-settings=imagesEnabled=false")
+    # chrome_options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images":2})
 
 
     driver = webdriver.Chrome(chrome_options=chrome_options)
 
     driver.get(url)
     
-    # Try/Except - times out if the button has not loaded in 20 seconds
-    timeout=20
+    # Try/Except
+    timeout = 20
 
     try:
         WebDriverWait(driver, timeout).until(EC.visibility_of_element_located\
