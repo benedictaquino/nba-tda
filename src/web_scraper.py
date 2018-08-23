@@ -54,7 +54,7 @@ def scrape_player(year):
         button2.click()
         csv = driver.find_element_by_id('csv_per_minute_stats').text
         driver.close()
-        with open('data/players{}{}.csv'.format(year-1,str(year)[-2:]), 'w+') as f:
+        with open('../data/players{}{}.csv'.format(year-1,str(year)[-2:]), 'w+') as f:
             f.write(csv)
         print("Success!")
         
