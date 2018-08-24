@@ -3,7 +3,7 @@
 ### To-do
 
 - [x] Gather NBA player statistics from Basketball-Reference.com
-- [ ] Inspect and clean player data
+- [x] Inspect and clean player data
 - [ ] Exploratory Data Analysis on Players
 - [ ] Gather NBA team standings from Basketball-Reference.com
 - [ ] Inspect and clean team data
