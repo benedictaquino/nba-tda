@@ -1,0 +1,30 @@
+Rk -- Rank
+Pos -- Position
+Age -- Age of Player at the start of February 1st of that season.
+Tm -- Team
+G -- Games
+GS -- Games Started
+MP -- Minutes Played
+FG -- Field Goals Per 36 Minutes
+FGA -- Field Goal Attempts Per 36 Minutes
+FG% -- Field Goal Percentage
+3P -- 3-Point Field Goals Per 36 Minutes
+3PA -- 3-Point Field Goal Attempts Per 36 Minutes
+3P% -- FG% on 3-Pt FGAs.
+2P -- 2-Point Field Goals Per 36 Minutes
+2PA -- 2-Point Field Goal Attempts Per 36 Minutes
+2P% -- FG% on 2-Pt FGAs.
+FT -- Free Throws Per 36 Minutes
+FTA -- Free Throw Attempts Per 36 Minutes
+FT% -- Free Throw Percentage
+ORB -- Offensive Rebounds Per 36 Minutes
+DRB -- Defensive Rebounds Per 36 Minutes
+TRB -- Total Rebounds Per 36 Minutes
+AST -- Assists Per 36 Minutes
+STL -- Steals Per 36 Minutes
+BLK -- Blocks Per 36 Minutes
+TOV -- Turnovers Per 36 Minutes
+PF -- Personal Fouls Per 36 Minutes
+PTS -- Points Per 36 Minutes
+
+From Basketball-Reference.com
