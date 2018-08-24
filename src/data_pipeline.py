@@ -115,7 +115,7 @@ def load_data(filename):
                 columns=['Player', 'id'])
 
     players_df['Player'] = player_id['Player']
-    players_df['id'] = plauer_id['id']
+    players_df['id'] = player_id['id']
 
     # If a player played for multiple teams, only keep his aggregated stats
     tm_total = players_df[players_df['Tm'] == 'TOT']['id'].unique()
@@ -123,12 +123,38 @@ def load_data(filename):
     drop_list = []
 
     for player in tm_total:
-        drop_list.extend(players_df[(players_df['id'] == player)&(players_df['Tm'] != 'TOT')].index)
+        drop_list.extend(players_df[(players_df['id'] == player)\
+                        &(players_df['Tm'] != 'TOT')].index)
         
     players_df.drop(drop_list, inplace=True)
+
+    # Create dummy variables for position    
+    players_df = pd.get_dummies(players_df, columns=['Pos']) 
+
+    # For multiple positions, set individual position indicators on and drop
+    # multi-position columns
+    positions = ['Pos_C', 'Pos_PF', 'Pos_PG', 'Pos_SG', 'Pos_SF']
+    multi_pos = []
+
+    for col in players_df.columns[29:]:
+        if col not in positions:
+            multi_pos.append(col)
+
+    for pos in multi_pos:
+        positions = pos.split('_')[1].split('-')
+
+        for i in range(len(positions)):
+            positions[i] = 'Pos_' + positions[i]
+            
+        for position in positions:
+            players_df[position] += players_df[pos]
+
+    players_df.drop(columns=multi_pos, inplace=True)
+
+    # Set index to player id
     players_df.set_index('id', inplace=True)
 
-    return player_df
+    return players_df
 
 if __name__ == "__main__":
     scrape_players(1985,2018)
