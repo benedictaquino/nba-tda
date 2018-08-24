@@ -128,6 +128,23 @@ def load_data(filename):
         
     players_df.drop(drop_list, inplace=True)
 
+    # Set index to player id
+    players_df.set_index('id', inplace=True)
+
+    return players_df
+
+def make_dummies(players_df):
+    '''
+    This function loads the data from a csv file into a DataFrame and cleans it
+
+    PARAMETERS
+    ----------
+    players_df: {pandas.DataFrame}
+
+    RETURNS
+    -------
+    players_df: {pandas.DataFrame}
+    '''
     # Create dummy variables for position    
     players_df = pd.get_dummies(players_df, columns=['Pos']) 
 
@@ -151,10 +168,8 @@ def load_data(filename):
 
     players_df.drop(columns=multi_pos, inplace=True)
 
-    # Set index to player id
-    players_df.set_index('id', inplace=True)
-
     return players_df
+
 
 if __name__ == "__main__":
     scrape_players(1985,2018)
