@@ -20,5 +20,5 @@
     - [NumPy](http://www.numpy.org/)
     - [matplotlib](https://matplotlib.org/)
     - [Dionysus](http://www.mrzv.org/software/dionysus2/index.html)
-    - [mapper](http://danifold.net/mapper/)
+    - [KeplerMapper](https://kepler-mapper.scikit-tda.org/about.html)
     - [Selenium](https://selenium-python.readthedocs.io/)
